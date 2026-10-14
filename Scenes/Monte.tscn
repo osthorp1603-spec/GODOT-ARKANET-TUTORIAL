@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b5km7nmy1gf2x"]
+
+[ext_resource type="Script" uid="uid://bpomg4d36c6fi" path="res://Scripts/Monte.gd" id="1_83vfi"]
+[ext_resource type="Texture2D" uid="uid://c16usu78fcffp" path="res://Assets/fondo/engranaje.png" id="1_ifjq2"]
+[ext_resource type="Texture2D" uid="uid://3x7xuc6vccxf" path="res://Assets/fondo/montana.png" id="2_83vfi"]
+
+[sub_resource type="Animation" id="Animation_c7qlk"]
+resource_name = "Engranaje"
+length = 3.0000000000000004
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Engranaje:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_o7a8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Engranaje:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stxha"]
+_data = {
+&"Engranaje": SubResource("Animation_c7qlk"),
+&"RESET": SubResource("Animation_o7a8i")
+}
+
+[node name="monte" type="Node2D" unique_id=739593619]
+script = ExtResource("1_83vfi")
+
+[node name="Engranaje" type="Sprite2D" parent="." unique_id=1783457897]
+position = Vector2(1240, 940)
+texture = ExtResource("1_ifjq2")
+
+[node name="Montana" type="Sprite2D" parent="." unique_id=941665239]
+position = Vector2(857, 847)
+texture = ExtResource("2_83vfi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1906428249]
+libraries/ = SubResource("AnimationLibrary_stxha")

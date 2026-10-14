@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dabcbyv6d503g"]
+
+[ext_resource type="Script" uid="uid://dnk6lsrnxcdbc" path="res://Scripts/PantallaPrincipal.gd" id="1_l4s74"]
+[ext_resource type="Texture2D" uid="uid://blwium4f6l7fo" path="res://Assets/pantalla_principal/background_menu.jpg" id="1_yhjsx"]
+[ext_resource type="Texture2D" uid="uid://pe0rnxut14vj" path="res://Assets/pantalla_principal/logo.png" id="2_l4s74"]
+[ext_resource type="FontFile" uid="uid://bft15mlep6vk" path="res://Assets/fonts/presets/kubica.tres" id="3_ivjgg"]
+
+[node name="PantallaPrincipal" type="Control" unique_id=9282548]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4s74")
+metadata/_edit_lock_ = true
+
+[node name="fondo" type="Control" parent="." unique_id=1525039230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="BG" type="TextureRect" parent="fondo" unique_id=1149119735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yhjsx")
+metadata/_edit_lock_ = true
+
+[node name="Logo" type="TextureRect" parent="fondo" unique_id=1491814809]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -509.0
+offset_top = 176.0
+offset_right = 509.0
+offset_bottom = 397.0
+grow_horizontal = 2
+texture = ExtResource("2_l4s74")
+metadata/_edit_lock_ = true
+
+[node name="Menu" type="Control" parent="." unique_id=25535963]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -437.5
+offset_top = -53.0
+offset_right = -234.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="controles" type="Button" parent="Menu" unique_id=2037904860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 469.5
+offset_top = -39.5
+offset_right = 874.5
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ivjgg")
+theme_override_font_sizes/font_size = 70
+text = "VER CONTROLES"
+flat = true
+
+[node name="jugar" type="Button" parent="Menu" unique_id=1467949365]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -39.5
+offset_right = 156.5
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ivjgg")
+theme_override_font_sizes/font_size = 70
+text = "JUGAR
+"
+flat = true
+
+[connection signal="pressed" from="Menu/controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="Menu/jugar" to="." method="_on_jugar_pressed"]

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://kw5jbi1p7qv4"]
+
+[ext_resource type="Script" uid="uid://dpagcufv5ygt1" path="res://Scripts/GrupoEnemigos.gd" id="1_ils43"]
+[ext_resource type="PackedScene" uid="uid://daicbpek5m3sn" path="res://Scenes/Enemigo.tscn" id="2_edjv3"]
+
+[sub_resource type="Curve2D" id="Curve2D_khmq5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1679, 172, 0, 0, 0, 0, 1335, 732, 0, 0, 0, 0, 1184, 458, 0, 0, 0, 0, 936, 463, 0, 0, 0, 0, 830, 275, 0, 0, 0, 0, 632, 609, 0, 0, 0, 0, 424, 361, 0, 0, 0, 0, 90, 358)
+}
+point_count = 8
+
+[node name="GrupoEnemigos2" type="Path2D" unique_id=763009436]
+curve = SubResource("Curve2D_khmq5")
+script = ExtResource("1_ils43")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1757461597]
+position = Vector2(1679, 172)
+rotation = 2.1352546
+rotates = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D" unique_id=1849887078 instance=ExtResource("2_edjv3")]
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="." unique_id=943262414]
+position = Vector2(1626.6588, 257.20688)
+rotation = 2.1352546
+progress = 100.0
+rotates = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D2" unique_id=973801000 instance=ExtResource("2_edjv3")]
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="." unique_id=108488517]
+position = Vector2(1574.317, 342.41406)
+rotation = 2.1352546
+progress = 200.0
+rotates = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D3" unique_id=139467728 instance=ExtResource("2_edjv3")]
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="." unique_id=325044384]
+position = Vector2(1521.9747, 427.6225)
+rotation = 2.1352546
+progress = 300.0
+rotates = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D4" unique_id=1996445950 instance=ExtResource("2_edjv3")]
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="." unique_id=2067950079]
+position = Vector2(1469.6321, 512.83124)
+rotation = 2.1352546
+progress = 400.0
+rotates = false
+loop = false
+
+[node name="Enemigo" parent="PathFollow2D5" unique_id=256784600 instance=ExtResource("2_edjv3")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=954013801]
+position = Vector2(1377, 530)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

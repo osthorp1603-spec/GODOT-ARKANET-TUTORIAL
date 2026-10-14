@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://6ge4vp4xnq7x"]
+
+[ext_resource type="Texture2D" uid="uid://buocsypbrvks8" path="res://Assets/disparo/disparo.png" id="1_np2ju"]
+[ext_resource type="Script" uid="uid://dt8uve1wogl1g" path="res://Scripts/Disparo.gd" id="1_vlb25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlb25"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(0, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op1nl"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(60, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb5a5"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(120, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1wsw"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(180, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t4nn"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(240, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ngvq"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(300, 0, 60, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wy7h"]
+atlas = ExtResource("1_np2ju")
+region = Rect2(360, 0, 60, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_woetl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlb25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op1nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb5a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1wsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t4nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ngvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wy7h")
+}],
+"loop": 1,
+"name": &"disparo",
+"speed": 30.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qus27"]
+radius = 6.0301614
+height = 37.978626
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_logt7"]
+size = Vector2(9.997517, 20)
+
+[node name="Disparo" type="RigidBody2D" unique_id=560546066]
+gravity_scale = 0.0
+lock_rotation = true
+linear_velocity = Vector2(1500, 0)
+script = ExtResource("1_vlb25")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=111216006]
+sprite_frames = SubResource("SpriteFrames_woetl")
+animation = &"disparo"
+frame = 3
+frame_progress = 0.64726186
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1694650903]
+rotation = 1.5794648
+shape = SubResource("CapsuleShape2D_qus27")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1476596326]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=302402368]
+modulate = Color(0, 0.59607846, 0.18431373, 1)
+position = Vector2(24.00116, -0.0048561096)
+rotation = -0.0048516467
+shape = SubResource("RectangleShape2D_logt7")
+debug_color = Color(0, 0.6, 0, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=195055540]
+position = Vector2(-10, -1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

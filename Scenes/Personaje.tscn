@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://da5kylqr706xh"]
+
+[ext_resource type="Script" uid="uid://ck48ppxm5sulr" path="res://Scripts/Personaje.gd" id="1_ith2g"]
+[ext_resource type="Texture2D" uid="uid://q88iq6t2y5mh" path="res://Assets/personaje/pj_barco_2.png" id="2_5ss6n"]
+[ext_resource type="Texture2D" uid="uid://b7cnh8swxqc4x" path="res://Assets/personaje/pj_globo.png" id="3_7vwnh"]
+[ext_resource type="AudioStream" uid="uid://cujddv4ge3l86" path="res://Sounds/sfx/disparo.ogg" id="4_5ss6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ith2g"]
+atlas = ExtResource("2_5ss6n")
+region = Rect2(0, 0, 296, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ss6n"]
+atlas = ExtResource("2_5ss6n")
+region = Rect2(296, 0, 296, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vwnh"]
+atlas = ExtResource("2_5ss6n")
+region = Rect2(592, 0, 296, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ee5"]
+atlas = ExtResource("2_5ss6n")
+region = Rect2(888, 0, 296, 165)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sin02"]
+atlas = ExtResource("2_5ss6n")
+region = Rect2(1184, 0, 296, 165)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38khm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ith2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ss6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vwnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ee5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sin02")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ska4m"]
+radius = 81.07336
+height = 277.95248
+
+[sub_resource type="Animation" id="Animation_ith2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("globo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5ss6n"]
+resource_name = "mover_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("globo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.06981317007977318]
+}
+
+[sub_resource type="Animation" id="Animation_7vwnh"]
+resource_name = "mover_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("globo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.06981317007977318]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1ee5"]
+_data = {
+&"RESET": SubResource("Animation_ith2g"),
+&"mover_left": SubResource("Animation_5ss6n"),
+&"mover_right": SubResource("Animation_7vwnh")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sin02"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ith2g"]
+animation = &"mover_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vmsb"]
+animation = &"mover_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2u7co"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j6aft"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mvla4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ss6n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7vwnh"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gtbxx"]
+states/RESET/node = SubResource("AnimationNodeAnimation_sin02")
+states/RESET/position = Vector2(526, 97.248)
+states/mover_left/node = SubResource("AnimationNodeAnimation_ith2g")
+states/mover_left/position = Vector2(312.4, 47.20001)
+states/mover_right/node = SubResource("AnimationNodeAnimation_5vmsb")
+states/mover_right/position = Vector2(729.2, 97.92)
+transitions = ["RESET", "mover_right", SubResource("AnimationNodeStateMachineTransition_2u7co"), "mover_right", "RESET", SubResource("AnimationNodeStateMachineTransition_j6aft"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mvla4"), "RESET", "mover_left", SubResource("AnimationNodeStateMachineTransition_5ss6n"), "mover_left", "RESET", SubResource("AnimationNodeStateMachineTransition_7vwnh")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ith2g"]
+radius = 108.0
+height = 216.0
+
+[node name="personaje" type="CharacterBody2D" unique_id=864860243 groups=["personaje"]]
+script = ExtResource("1_ith2g")
+
+[node name="Barco" type="AnimatedSprite2D" parent="." unique_id=247795993]
+position = Vector2(-3, 56)
+sprite_frames = SubResource("SpriteFrames_38khm")
+animation = &"Idle"
+frame = 4
+frame_progress = 0.15052088
+
+[node name="globo" type="Sprite2D" parent="." unique_id=594281952]
+position = Vector2(14, -29)
+texture = ExtResource("3_7vwnh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1293334071]
+position = Vector2(6, 22.999998)
+rotation = 1.5639559
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_ska4m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=403714713]
+libraries/ = SubResource("AnimationLibrary_t1ee5")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=216616348]
+tree_root = SubResource("AnimationNodeStateMachine_gtbxx")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="." unique_id=933896060]
+wait_time = 0.3
+
+[node name="DisparoPos" type="Marker2D" parent="." unique_id=578118663]
+position = Vector2(132, 67)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=704660421]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1236653680]
+self_modulate = Color(9.3854965e-07, 0.62456626, 0.021727376, 1)
+position = Vector2(8, 22)
+shape = SubResource("CapsuleShape2D_ith2g")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2075158327]
+stream = ExtResource("4_5ss6n")
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

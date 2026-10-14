@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dsh4v3gfoln34"]
+
+[ext_resource type="Texture2D" uid="uid://brved4rlsy6wc" path="res://Assets/fondo/fondo.jpg" id="1_ajd1r"]
+[ext_resource type="Script" uid="uid://yr1iid3jyha4" path="res://Scripts/Camera_2d.gd" id="2_be3kc"]
+[ext_resource type="PackedScene" uid="uid://da5kylqr706xh" path="res://Scenes/Personaje.tscn" id="3_2vutj"]
+[ext_resource type="PackedScene" uid="uid://k3ko3tedh1jv" path="res://Scenes/PowerUp.tscn" id="4_qgbhc"]
+[ext_resource type="PackedScene" uid="uid://cdjgxeqdkhuv5" path="res://Scenes/EnemigoDirigido.tscn" id="6_t7po5"]
+[ext_resource type="PackedScene" uid="uid://dfuxwaxspvd7u" path="res://Scenes/GrupoEnemigos.tscn" id="7_m57vk"]
+[ext_resource type="PackedScene" uid="uid://botvebq8gjm2y" path="res://Scenes/Meta.tscn" id="8_rnu1g"]
+[ext_resource type="Texture2D" uid="uid://d3x3ew4catqq2" path="res://Assets/fondo/tilemap.png" id="9_prucq"]
+[ext_resource type="PackedScene" uid="uid://b5km7nmy1gf2x" path="res://Scenes/Monte.tscn" id="10_gaktd"]
+[ext_resource type="Texture2D" uid="uid://yosvjxyv3afv" path="res://Assets/hud/barra_vida.png" id="11_lynkp"]
+[ext_resource type="Texture2D" uid="uid://cpucptdi3y2ov" path="res://Assets/hud/vida.png" id="12_ygwh7"]
+[ext_resource type="Texture2D" uid="uid://bhce8ndfjhijk" path="res://Assets/hud/tabla_puntos.png" id="13_obbck"]
+[ext_resource type="AudioStream" uid="uid://55on1dqo7gpc" path="res://Sounds/bgm/Archnet-music-background_mezcla.ogg" id="14_ajd1r"]
+[ext_resource type="FontFile" uid="uid://bc8k1plg2t080" path="res://Assets/fonts/Kubika Font/Kubika Rough.ttf" id="14_fb0pb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nnbnc"]
+texture = ExtResource("9_prucq")
+texture_region_size = Vector2i(90, 90)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-45, -45, 45, -45, 45, 45, -45, 45)
+
+[sub_resource type="TileSet" id="TileSet_naha6"]
+tile_size = Vector2i(90, 90)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nnbnc")
+
+[node name="TemplateNivel" type="Node2D" unique_id=1332549349]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=394089837]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=865958906]
+motion_mirroring = Vector2(5760, 0)
+
+[node name="Fondo" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=903049266]
+position = Vector2(2880, 540)
+texture = ExtResource("1_ajd1r")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2058118284]
+position = Vector2(960, 540)
+script = ExtResource("2_be3kc")
+
+[node name="personaje" parent="Camera2D" unique_id=864860243 instance=ExtResource("3_2vutj")]
+position = Vector2(-578, -268)
+
+[node name="PowerUp" parent="." unique_id=1637160430 instance=ExtResource("4_qgbhc")]
+position = Vector2(758, 138)
+
+[node name="Enemigos" type="Node2D" parent="." unique_id=1015812268]
+
+[node name="EnemigoDirigido" parent="Enemigos" unique_id=1014690426 instance=ExtResource("6_t7po5")]
+position = Vector2(2665, 144)
+
+[node name="GrupoEnemigos" parent="Enemigos" unique_id=141131813 instance=ExtResource("7_m57vk")]
+position = Vector2(1573, 87)
+
+[node name="Meta" parent="." unique_id=35021978 instance=ExtResource("8_rnu1g")]
+position = Vector2(4495, 628)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=403367994]
+tile_set = SubResource("TileSet_naha6")
+
+[node name="monte" parent="." unique_id=739593619 instance=ExtResource("10_gaktd")]
+position = Vector2(-571, 0)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1417266682 groups=["hud"]]
+
+[node name="BarraVida" type="TextureRect" parent="HUD" unique_id=1147475693]
+offset_left = 35.0
+offset_top = 25.0
+offset_right = 427.0
+offset_bottom = 126.0
+texture = ExtResource("11_lynkp")
+
+[node name="vida" type="TextureRect" parent="HUD/BarraVida" unique_id=2098741052]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 37.0
+offset_right = 216.0
+offset_bottom = 60.0
+texture = ExtResource("12_ygwh7")
+
+[node name="vida2" type="TextureRect" parent="HUD/BarraVida" unique_id=801768117]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 37.0
+offset_right = 293.0
+offset_bottom = 60.0
+texture = ExtResource("12_ygwh7")
+
+[node name="vida3" type="TextureRect" parent="HUD/BarraVida" unique_id=1261846255]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 37.0
+offset_right = 371.0
+offset_bottom = 60.0
+texture = ExtResource("12_ygwh7")
+
+[node name="BarraPuntos" type="TextureRect" parent="HUD" unique_id=771826064]
+offset_left = 1575.0
+offset_top = 16.0
+offset_right = 1901.0
+offset_bottom = 117.0
+texture = ExtResource("13_obbck")
+
+[node name="Label" type="Label" parent="HUD/BarraPuntos" unique_id=446534622]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 30.0
+offset_right = 247.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("14_fb0pb")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=105088181]
+stream = ExtResource("14_ajd1r")
+autoplay = true
+bus = &"BGM"

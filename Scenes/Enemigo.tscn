@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://daicbpek5m3sn"]
+
+[ext_resource type="Script" uid="uid://tclcfre80pok" path="res://Scripts/Enemigo.gd" id="1_okatw"]
+[ext_resource type="Texture2D" uid="uid://ic338cb22umf" path="res://Assets/enemigos/enemigo1.png" id="1_tusv5"]
+[ext_resource type="Texture2D" uid="uid://cwuhuds4cgria" path="res://Assets/enemigos/explosion.png" id="2_he5sb"]
+[ext_resource type="AudioStream" uid="uid://dfsrntndmxvsy" path="res://Sounds/sfx/enemigo_destruido.ogg" id="4_2mqn1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mqn1"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(0, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxdoq"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(200, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2twk"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(400, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqadn"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(600, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5y2b"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(800, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb8ca"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(1000, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqipw"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(1200, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbjo2"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(1400, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73qxq"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(1600, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfkmq"]
+atlas = ExtResource("2_he5sb")
+region = Rect2(1800, 0, 200, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5yr1"]
+atlas = ExtResource("1_tusv5")
+region = Rect2(0, 0, 156, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1bhj"]
+atlas = ExtResource("1_tusv5")
+region = Rect2(156, 0, 156, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn4tu"]
+atlas = ExtResource("1_tusv5")
+region = Rect2(312, 0, 156, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju3ra"]
+atlas = ExtResource("1_tusv5")
+region = Rect2(468, 0, 156, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_736wb"]
+atlas = ExtResource("1_tusv5")
+region = Rect2(624, 0, 156, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v5y43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mqn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxdoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2twk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqadn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5y2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb8ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqipw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbjo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73qxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfkmq")
+}],
+"loop": 0,
+"name": &"explosion",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5yr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1bhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn4tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju3ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_736wb")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnssi"]
+radius = 40.0
+height = 125.95727
+
+[node name="Enemigo" type="Area2D" unique_id=1849887078 groups=["enemigo"]]
+rotation = -2.1443417
+script = ExtResource("1_okatw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2034319933]
+sprite_frames = SubResource("SpriteFrames_v5y43")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=480650186]
+position = Vector2(4, 5)
+rotation = 1.565662
+shape = SubResource("CapsuleShape2D_jnssi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1512478938]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1169002402]
+stream = ExtResource("4_2mqn1")
+bus = &"SFX"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
