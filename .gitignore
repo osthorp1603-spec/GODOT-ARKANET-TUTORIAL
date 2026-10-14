@@ -6,5 +6,5 @@
 Exports/
 Builds/
 export_presets.cfg
-addons/godot-git-plugin/
+
 *.import
