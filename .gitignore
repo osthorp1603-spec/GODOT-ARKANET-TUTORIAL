@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Ignorar archivos innecesarios
+Exports/
+Builds/
+export_presets.cfg
+addons/godot-git-plugin/
+*.import
