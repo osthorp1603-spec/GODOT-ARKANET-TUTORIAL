@@ -80,6 +80,10 @@ The project follows a modular scene-based architecture typical of Godot.
 *   **Godot 4 Adaptation:** The original tutorial's Godot 3 code was refactored to leverage Godot 4 features, including updated node types, GDScript 2.0 syntax, and modern signal connections.
 
 ## 5. Evidence
+*   **Playable Game:**
+    [Play Arkanet on itch.io](https://osthorp1603-spec.itch.io/arkanet)
+
+
 ![main menu](./evidencias/Pantallaprincipal.png)
 ![Control screen](./evidencias/controlscreen.png)
 ![Goal](./evidencias/goal.png)
